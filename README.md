@@ -115,14 +115,6 @@ python engine.py dev
 
 ---
 
-3️⃣ Start Frontend (Interface)
-
-cd frontend
-npm run dev
-# Running @ http://localhost:5173
-
-
----
 
 🛠️ Runtime Best Practices
 
