@@ -105,17 +105,6 @@ APP_MODE=development
 
 (Add your own environment variables later as your project grows)
 
-
----
-
-🔥 Phase 3 — System Ignition
-
-1️⃣ Start Backend Engine (Compiler Service)
-
-python backend/server.py
-# ONLINE @ http://localhost:5000
-
-
 ---
 
 2️⃣ AI/Logic Engine (Optional Future Add-on)
