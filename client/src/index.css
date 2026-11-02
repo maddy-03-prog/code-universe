@@ -1,0 +1,165 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+  :root {
+    /* CODE UNIVERSE Design Tokens — Dark Mode (default) */
+    --background: 222 20% 6%;
+    --foreground: 210 20% 94%;
+    --card: 222 20% 9%;
+    --card-foreground: 210 20% 94%;
+    --popover: 222 22% 8%;
+    --popover-foreground: 210 20% 94%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 20% 6%;
+    --secondary: 250 60% 55%;
+    --secondary-foreground: 210 20% 94%;
+    --muted: 222 15% 13%;
+    --muted-foreground: 215 15% 55%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 210 20% 94%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 20% 94%;
+    --border: 222 15% 16%;
+    --input: 222 15% 13%;
+    --ring: 217 91% 60%;
+    --radius: 0.5rem;
+
+    /* Custom brand tokens */
+    --cu-bg-base: hsl(222, 20%, 6%);
+    --cu-bg-surface: hsl(222, 20%, 9%);
+    --cu-bg-elevated: hsl(222, 20%, 12%);
+    --cu-bg-overlay: hsl(222, 22%, 15%);
+    --cu-border: hsl(222, 15%, 16%);
+    --cu-border-subtle: hsl(222, 15%, 12%);
+    --cu-text-primary: hsl(210, 20%, 94%);
+    --cu-text-secondary: hsl(215, 15%, 70%);
+    --cu-text-muted: hsl(215, 15%, 45%);
+    --cu-blue: hsl(217, 91%, 60%);
+    --cu-violet: hsl(250, 70%, 65%);
+    --cu-green: hsl(143, 71%, 45%);
+    --cu-amber: hsl(38, 92%, 50%);
+    --cu-red: hsl(0, 72%, 51%);
+    --cu-cyan: hsl(190, 90%, 50%);
+  }
+
+  :root[data-theme="light"] {
+    --background: 210 20% 98%;
+    --foreground: 222 25% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 25% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 25% 12%;
+    --muted: 210 20% 92%;
+    --muted-foreground: 215 15% 42%;
+    --border: 214 20% 83%;
+    --input: 210 20% 94%;
+    --cu-bg-base: hsl(210, 20%, 98%);
+    --cu-bg-surface: hsl(0, 0%, 100%);
+    --cu-bg-elevated: hsl(210, 20%, 95%);
+    --cu-bg-overlay: hsl(210, 18%, 91%);
+    --cu-border: hsl(214, 20%, 83%);
+    --cu-border-subtle: hsl(214, 18%, 89%);
+    --cu-text-primary: hsl(222, 25%, 12%);
+    --cu-text-secondary: hsl(215, 15%, 32%);
+    --cu-text-muted: hsl(215, 12%, 45%);
+    --cu-violet: hsl(250, 70%, 58%);
+    --cu-green: hsl(143, 71%, 35%);
+    --cu-amber: hsl(38, 92%, 40%);
+    --cu-red: hsl(0, 72%, 45%);
+    --cu-cyan: hsl(190, 90%, 38%);
+  }
+
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: var(--cu-bg-base);
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  #root {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  code, pre, .code, .mono {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(222, 15%, 22%);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(222, 15%, 32%);
+  }
+
+  /* Selection */
+  ::selection {
+    background: hsl(217, 91%, 60%, 0.3);
+  }
+
+  /* Focus ring */
+  :focus-visible {
+    outline: 2px solid var(--cu-blue);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .cu-surface {
+    background: var(--cu-bg-surface);
+    border: 1px solid var(--cu-border);
+  }
+  .cu-elevated {
+    background: var(--cu-bg-elevated);
+    border: 1px solid var(--cu-border);
+  }
+  .cu-glow-blue {
+    box-shadow: 0 0 20px hsl(217, 91%, 60%, 0.15);
+  }
+  .cu-glow-violet {
+    box-shadow: 0 0 20px hsl(250, 70%, 65%, 0.15);
+  }
+  .gradient-text {
+    background: linear-gradient(135deg, var(--cu-blue) 0%, var(--cu-violet) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .gradient-border {
+    border-image: linear-gradient(135deg, var(--cu-blue), var(--cu-violet)) 1;
+  }
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Animations */
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+  }
+  .animate-pulse-slow {
+    animation: pulse-slow 3s ease-in-out infinite;
+  }
+}
